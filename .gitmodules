@@ -1,4 +1,0 @@
-[submodule "projects"]
-	path = projects
-	url = https://github.com/dsvolunteers/projects.git
-	branch = master
