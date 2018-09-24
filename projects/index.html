@@ -1,0 +1,24 @@
+<html>
+<head>
+<script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyCKl8njUc7vQYrolyaoRdPT3Qq2zLOWYYc",
+    authDomain: "dsv-data.firebaseapp.com",
+    databaseURL: "https://dsv-data.firebaseio.com",
+    projectId: "dsv-data",
+    storageBucket: "dsv-data.appspot.com",
+    messagingSenderId: "482154628232"
+  };
+  var app = firebase.initializeApp(config);
+  var db = firebase.firestore(app);
+	db.collection("projects").get().then(function(querySnapshot) {
+		querySnapshot.forEach(function(doc) {
+	    // doc.data() is never undefined for query doc snapshots
+	    console.log(doc.id, " => ", doc.data());
+		});
+	});
+</script>
+</head>
+</html>
