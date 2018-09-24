@@ -1,5 +1,84 @@
 <html>
 <head>
+<style type="text/css">
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	padding: 10px;
+}
+
+#header {
+	background-image: url('./dsvm_logo_square_tight.png');
+	background-size: 245px 255px;
+	background-repeat: no-repeat;
+	width: 245px;
+	height: 255px;
+	margin: 0 auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+.project {
+	border: 1px solid #eee;
+	background-color: #f9f9f9;
+	border-radius: 15px;
+	padding: 20px;
+	font-family: "Helvetica Neue", Helvetica;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.project .hashtag {
+	font-weight: bold;
+	display: inline;
+	font-size: large;
+}
+
+.project .hashtag::after {
+	content: "\00a0\2219\00a0";
+}
+
+.project .summary {
+	display: inline;
+	font-style: italic;
+	font-size: large;
+}
+
+.project .description {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.project .link::before {
+	content: '\1F517\00a0';
+	font-size: small;
+}
+
+.project .link {
+	
+}
+
+.project .lead::before {
+	content: 'by\00a0';
+	font-style: normal;
+}
+
+.project .lead {
+	margin-top: 10px;
+	font-style: italic;
+}
+
+.project .contact::before {
+	content: '\1F48C\00a0';
+	font-size: small;
+}
+
+.project .contact {
+}
+</style>
 <script src="https://www.gstatic.com/firebasejs/5.5.1/firebase.js"></script>
 <script>
   // Initialize Firebase
@@ -16,9 +95,26 @@
 	db.collection("projects").get().then(function(querySnapshot) {
 		querySnapshot.forEach(function(doc) {
 	    // doc.data() is never undefined for query doc snapshots
-	    console.log(doc.id, " => ", doc.data());
+	    data = doc.data();
+	    console.log(doc.id, " => ", data);
+	    var projects = document.getElementById('projects');
+	    projects.innerHTML +=  "<div class='project' id='" + doc.id +"'>" 
+	    + "<div class='hashtag'>" + data.hashtag + "</div>"
+	    + "<div class='summary'>" + data.summary + "</div>"
+	    + "<div class='lead'>" + data.lead + "</div>"
+	    + "<div class='description'>" + data.description + "</div>"
+	    + "<div class='link'><a href='" + data.link + "'>Website</a></div>"
+	    + "<div class='contact'><a href='" + data.contact + "'>Contact</a></div>"
+	    + "</div>";
 		});
+		document.getElementById('loading').style.display = 'none'; 
 	});
+	
 </script>
 </head>
+<body>
+	<div id='header'></div>
+	<div id='projects'></div>
+	<div id='loading'>Loading...</div>
+</body>
 </html>
