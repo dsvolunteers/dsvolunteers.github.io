@@ -258,30 +258,34 @@
 		  };
 		  var app = firebase.initializeApp(config);
 		  var db = firebase.firestore(app);
-			db.collection("projects").get().then(function(querySnapshot) {
+
+		  var urlParams = new URLSearchParams(window.location.search);
+		  var lead = urlParams.get('by');
+		  if(lead != null){
+		  	var lead_filter = lead.replace(/-/gi, ' ');
+		  	var collection = db.collection("projects").orderBy('lead').startAt(lead_filter).endAt(lead_filter);
+		  	document.getElementById('showall').style.visibility = 'visible'; 
+		  } else {
+		  	var collection = db.collection("projects")
+		  }
+		  collection.get().then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
-			    var data = doc.data();
-			    var lead = data.lead.toLowerCase().replace(/ /gi, '_').replace(/[^0-9a-z_]/gi, '');
-			    var projects = document.getElementById('projects');
-			    projects.innerHTML +=  "<div class='project' id='" + doc.id +"'>" 
-			    
-			    + "<div class='lead'><a href='?by=" + data.lead + "'><object data='./static/leads/" + lead + ".png' type='image/png'>" + data.lead.charAt(0) + "</object><span>" + data.lead + "</span></a></div>"
-			    + "<div class='hashtag'>" + data.hashtag + "</div>"
-			    + "<div class='summary'>" + data.summary + "</div>"
-			    + "<div class='description'>" + data.description + "</div>"
-			    + "<div class='link'><a href='" + data.link + "'>Website</a></div>"
-			    + "<div class='contact'><a href='" + data.contact + "'>Contact</a></div>"
-			    + "</div>";
+				    var data = doc.data();
+				    var lead = data.lead.toLowerCase().replace(/ /gi, '_').replace(/[^0-9a-z_]/gi, '');
+				    var lead_filter = data.lead.replace(/ /gi, '-');
+				    var projects = document.getElementById('projects');
+				    projects.innerHTML +=  "<div class='project' id='" + doc.id +"'>" 
+				    + "<div class='lead'><a href='?by=" + lead_filter + "'><object data='./static/leads/" + lead + ".png' type='image/png'>" + /*data.lead.charAt(0) +*/ "</object><span>" + data.lead + "</span></a></div>"
+				    + "<div class='hashtag'>" + data.hashtag + "</div>"
+				    + "<div class='summary'>" + data.summary + "</div>"
+				    + "<div class='description'>" + data.description + "</div>"
+				    + "<div class='link'><a href='" + data.link + "' target='_blank'>Website</a></div>"
+				    + "<div class='contact'><a href='" + data.contact + "' target='_blank'>Contact</a></div>"
+				    + "</div>";
 				});
+				document.getElementById('projects').innerHTML += "<div class='project perm'><div class='lead'><a><object data='./static/leads/hackathons_australia.png' type='image/png'></object><span>Hackathons Australia</span></a></div><div class='hashtag'>#hackaus</div><div class='summary'>Not what you're looking for? Start something new at a hackathon!</div><div class='description'>An index of upcoming and past hackathons around the country. Hackathons Australia is a not-for-profit community for hackathon organisers, participants, sponsors, partners and government to connect, empower, grow and advance the hackathon community and accelerate an innovative culture.</div><div class='link'><a href='http://hackathonsaustralia.com' target='_blank'>Website</a></div></div>";
 				document.getElementById('loading').style.display = 'none'; 
 			});
 		</script>
-	</head>
-	<body>
-		<div id='header'></div>
-		<div id='projects'></div>
-		<div id='loading'>Loading projects...</div>
-		<div class='project perm'><div class='lead'>Hackathons Australia</div><div class='hashtag'>#hackaus</div><div class="summary">Not what you're looking for? Start something new at a hackathon!</div><div class="description">An index of upcoming and past hackathons around the country. Hackathons Australia is a not-for-profit community for hackathon organisers, participants, sponsors, partners and government to connect, empower, grow and advance the hackathon community and accelerate an innovative culture.</div><div class='link'><a href='http://hackathonsaustralia.com' target='_blank'>Website</a></div></div>
-		<div id='footer'>Copyright &copy; Data Science Volunteers</div>
 	</body>
 </html>
