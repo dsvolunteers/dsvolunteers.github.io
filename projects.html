@@ -271,7 +271,7 @@
 		  collection.get().then(function(querySnapshot) {
 				querySnapshot.forEach(function(doc) {
 				    var data = doc.data();
-				    var lead = data.lead.toLowerCase().replace(/ /gi, '_').replace(/[^0-9a-z_]/gi, '');
+				    var lead = data.lead.toLowerCase().replace(/ /g, '_').replace(/[^0-9a-z_]/g, '');
 				    var lead_filter = data.lead.replace(/ /gi, '-');
 				    var projects = document.getElementById('projects');
 				    projects.innerHTML +=  "<div class='project' id='" + doc.id +"'>" 
