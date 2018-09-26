@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="./static/images/favicon.png">
+    <title>Data Science Volunteers－What we do</title>
+    <style type="text/css">
+      html, body {
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial;
+      }
+
+      .container {
+        padding: 10px;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      #header {
+        background-image: url('./static/images/data_science_volunteers.png');
+        background-size: 245px 255px;
+        background-repeat: no-repeat;
+        width: 245px;
+        height: 255px;
+        margin: 0 auto;
+        margin-top: 50px;
+        margin-bottom: 60px;
+      }
+
+      .project {
+        border: 1px solid #eee;
+        background-color: #f9f9f9;
+        border-radius: 10px;
+        padding: 16px;
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+
+      .project.perm {
+        border: 1px solid #fff875;
+        background-color: #fffef4;
+      }
+
+      .project .hashtag {
+        font-weight: bold;
+        display: inline;
+        font-size: large;
+      }
+
+      .project .hashtag::after {
+        content: "\00a0\2219\00a0";
+      }
+
+      .project .summary {
+        display: inline;
+        font-style: italic;
+        font-size: large;
+      }
+
+      .project .description {
+        margin-top: 10px;
+        margin-bottom: 15px;
+      }
+
+      .project .lead {
+        font-style: italic;
+        margin-bottom: 10px;
+        font-size: small;
+        height: 20px;
+        vertical-align: middle;
+      }
+
+      .project .lead a {
+        text-decoration: none;
+      }
+
+      .project .lead a span {
+        color: #111;
+        vertical-align: middle;
+      }
+
+      .project .lead a object {
+        height: 20px;
+        padding-right: 5px;
+        background-color: #f9f9f9;;
+        text-align: center;
+        border: none;
+        font-style: normal;
+        font-weight: bold;
+        color: black;
+        vertical-align: middle;
+      }
+
+      .project .link, .project .contact {
+        border: 1px solid #ccdfff;
+        background: white;
+        display: inline-block;
+        margin-right: 10px;
+        border-radius: 6px;
+        font-size: small;
+      }
+
+      .project .link:hover, .project .contact:hover {
+        background: #ccdfff;
+      }
+
+      .project .link a, .project .contact a {
+        color: #000;
+        text-decoration: none;
+          padding: 4px 8px 4px 8px;
+          display: inline-block;
+      }
+
+      .project .link a::before {
+        content: '\1F517\00a0';
+        font-size: small;
+      }
+
+      .project .contact a::before {
+        content: '\1F48C\00a0';
+        font-size: small;
+      }
+
+      #footer {
+        margin: 30px auto 20px auto;
+        text-align: center;
+        font-size: x-small;
+        color: #999;
+      }
+
+      #footer a {
+        text-decoration: none;
+      }
+
+      .hidden {
+        display: none;
+        margin: 0;
+      }
+
+      #banner {
+        background-color: #ffeded;
+        padding: 10px;
+        border-bottom: 1px solid #ffadad;
+        font-size: small;
+      }
+
+      #banner a, #showall a, .about span a {
+        color: black;
+        border-bottom: 1px dotted black;
+        text-decoration: none;
+      }
+
+      #banner a:hover, #showall a:hover, .about span a:hover  {
+        border-bottom: none;
+      }
+
+      #banner span {
+        padding: 10px;
+        max-width: 800px;
+        margin: 0 auto;
+        display: block;
+      }
+
+      #showall {
+        visibility: hidden;
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .about {
+        font-size: small;
+        font-weight: normal;
+        margin-bottom: 40px;
+      }
+
+      .about span:first-of-type {
+        font-weight: normal;
+        display: block;
+        font-size: x-large;
+        margin-bottom: 10px;
+      }
+
+      .about span:last-of-type {
+        font-weight: normal;
+        display: block;
+        font-size: larger;
+        margin-bottom: 0px;
+      }
+
+      .about span p {
+        margin-block-start: 0.5em;
+      }
+    </style>
+  </head>
+  <body>
+    <div id='banner'><span>👋 Ooh－You've found Data Science Volunteers! We haven't launched yet, but would still love your <a href='https://docs.google.com/forms/d/e/1FAIpQLSfmICpl6aqvJ5GCBflK0LETppO9Qq0lOqIY5V3MX_8kKr4ONQ/viewform?usp=sf_link' target="_blank">feedback and suggestions</a>.</span></div>
+    <div class='container'>
+      <div id='header'></div>
+      <div class='about'><span>Project directory</span><span>Browse all of the opportunities for you to get involved in an existing project or list your own project to find help!<a href='#'>x</a>!</span></div>
+      <div class='about'><span>Volunteers toolbox</span><span>The essential tools for doing data science projects on a zero dollar budget <a href='#'>x</a>!</span></div>
+      <div class='about'><span>Champions kit</span><span>Trying to explain to your workplace or university group what volunteer data science is all about? Start with our handy presentation <a href='#'>x</a>!</span></div>
+      <div class='about'><span>Event support</span><span>Are you an organiser looking for a venue for your meetup, hackathon or community event? We know how hard this can be and we've got you covered <a href='#'>x</a>!</span></div>
+      <div id='footer'>Copyright &copy; Data Science Volunteers <a href='http://linkedin.com/in/blairhudson' target='_blank'>🙋🏻‍♂️</a></div>
+    </div>
+  </body>
+</html>
