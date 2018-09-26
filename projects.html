@@ -297,8 +297,8 @@
       var lead = urlParams.get('by');
 
       if(lead != null){
-        var lead_filter = lead.replace(/-/gi, ' ');
-        var collection = db.collection("projects").orderBy('lead').startAt(lead_filter).endAt(lead_filter);
+        var projectBy = lead.replace(/-/gi, ' ');
+        var collection = db.collection("projects").where('lead','==',projectBy);
         document.getElementById('showall').style.visibility = 'visible'; 
       } else {
         var collection = db.collection("projects")
