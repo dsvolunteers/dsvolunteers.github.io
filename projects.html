@@ -68,19 +68,30 @@
         margin-bottom: 15px;
       }
 
+      .project .locality {
+        font-style: normal;
+        margin-bottom: 10px;
+        font-size: small;
+        height: 20px;
+        vertical-align: middle;
+        text-align: right;
+        float: right;
+      }
+
       .project .lead {
         font-style: italic;
         margin-bottom: 10px;
         font-size: small;
         height: 20px;
         vertical-align: middle;
+        float: left;
       }
 
-      .project .lead a {
+      .project .lead a, .project .locality a {
         text-decoration: none;
       }
 
-      .project .lead a span {
+      .project .lead a span, .project .locality a span  {
         color: #111;
         vertical-align: middle;
       }
@@ -197,6 +208,10 @@
       #about span p {
         margin-block-start: 0.5em;
       }
+
+      .clear {
+        clear: both;
+      }
     </style>
   </head>
   <body>
@@ -297,13 +312,32 @@
 
       var urlParams = new URLSearchParams(window.location.search);
       var lead = urlParams.get('by');
-
-      if(lead != null){
+      var locality = urlParams.get('in');
+      if(lead != null && locality != null){
         var projectBy = lead.replace(/-/gi, ' ');
-        var collection = db.collection("projects").where('lead','==',projectBy);
+        var projectIn = locality.replace(/-/gi, ' ');
+        var collection = db.collection("projects").where('lead','==',projectBy).where('locality','==',projectIn);
         document.getElementById('showall').style.visibility = 'visible'; 
+      } else if(lead != null) {
+        var projectBy = lead.replace(/-/gi, ' ');
+        var projectIn = '';
+        var collection = db.collection("projects").where('lead','==',projectBy);
+      } else if(locality != null) {
+        var projectIn = locality.replace(/-/gi, ' ');
+        var projectBy = '';
+        var collection = db.collection("projects").where('locality','==',projectIn);
       } else {
+        var projectIn = '';
+        var projectBy = '';
         var collection = db.collection("projects")
+      }
+
+      if(projectIn != ''){
+        projectIn = 'in=' + locality + '&';
+      }
+
+      if(projectBy != ''){
+        projectBy = 'by=' + lead + '&';
       }
 
       collection.get().then(function(querySnapshot) {
@@ -311,9 +345,18 @@
           var data = doc.data();
           var lead = data.lead.toLowerCase().replace(/ /g, '_').replace(/[^0-9a-z_]/g, '');
           var lead_filter = data.lead.replace(/ /gi, '-');
+          var locality_filter = data.locality.replace(/ /gi, '-');
           var projects = document.getElementById('projects');
+          var country = data.locality.slice(-2);
+          if (country == 'AU'){
+            country = '🇦🇺';
+          }
+          var city = data.locality.slice(0, -3);
+          if (data.locality ) 
           projects.innerHTML +=  "<div class='project' id='" + doc.id +"'>" 
-          + "<div class='lead'><a href='?by=" + lead_filter + "'><object data='./static/images/leads/" + lead + ".png' type='image/png'>" + /*data.lead.charAt(0) +*/ "</object><span>" + data.lead + "</span></a></div>"
+          + "<div class='lead'><a href='?" + projectIn + "by=" + lead_filter + "'><object data='./static/images/leads/" + lead + ".png' type='image/png'>" + /*data.lead.charAt(0) +*/ "</object><span>" + data.lead + "</span></a></div>"
+          + "<div class='locality'><a href='?" + projectBy + "in=" + locality_filter + "'><span>" + city + ' ' + country + "</span></a></div>"
+          + "<div class='clear'></div>"
           + "<div class='hashtag'>" + data.hashtag + "</div>"
           + "<div class='summary'>" + data.summary + "</div>"
           + "<div class='description'>" + data.description + "</div>"
