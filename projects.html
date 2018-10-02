@@ -50,7 +50,7 @@
       .project .hashtag {
         font-weight: bold;
         display: inline;
-        font-size: large;
+        margin-top: 30px;
       }
 
       .project .hashtag::after {
@@ -69,22 +69,26 @@
       }
 
       .project .locality {
-        font-style: normal;
         margin-bottom: 10px;
         font-size: small;
         height: 20px;
         vertical-align: middle;
         text-align: right;
+        display: inline-block;
+        line-height: 20px;
         float: right;
+        width: 35%;
       }
 
       .project .lead {
-        font-style: italic;
         margin-bottom: 10px;
         font-size: small;
         height: 20px;
         vertical-align: middle;
+        display: inline-block;
+        line-height: 20px;
         float: left;
+        width: 65%;
       }
 
       .project .lead a, .project .locality a {
@@ -94,6 +98,7 @@
       .project .lead a span, .project .locality a span  {
         color: #111;
         vertical-align: middle;
+        height: 20px;
       }
 
       .project .lead a object {
@@ -364,7 +369,7 @@
           + "<div class='contact'><a href='" + data.contact + "' target='_blank'>Contact</a></div>"
           + "</div>";
         });
-        document.getElementById('projects').innerHTML += "<div class='project perm'><div class='lead'><a><object data='./static/images/leads/hackathons_australia.png' type='image/png'></object><span>Hackathons Australia</span></a></div><div class='hashtag'>#hackaus</div><div class='summary'>Not what you're looking for? Start something new at a hackathon!</div><div class='description'>An index of upcoming and past hackathons around the country. Hackathons Australia is a not-for-profit community for hackathon organisers, participants, sponsors, partners and government to connect, empower, grow and advance the hackathon community and accelerate an innovative culture.</div><div class='link'><a href='http://hackathonsaustralia.com' target='_blank'>Website</a></div></div>";
+        document.getElementById('projects').innerHTML += "<div class='project perm'><div class='lead'><a><object data='./static/images/leads/hackathons_australia.png' type='image/png'></object><span>Hackathons Australia</span></a></div><div class='clear'></div><div class='hashtag'>#hackaus</div><div class='summary'>Not what you're looking for? Start something new at a hackathon!</div><div class='description'>An index of upcoming and past hackathons around the country. Hackathons Australia is a not-for-profit community for hackathon organisers, participants, sponsors, partners and government to connect, empower, grow and advance the hackathon community and accelerate an innovative culture.</div><div class='link'><a href='http://hackathonsaustralia.com' target='_blank'>Website</a></div></div>";
         document.getElementById('loading').style.display = 'none'; 
       });
     </script>
