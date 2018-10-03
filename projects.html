@@ -216,8 +216,14 @@
 
       .clear {
         clear: both;
+    <script src="//twemoji.maxcdn.com/2/twemoji.min.js?11.2"></script>
+    <script>
+      window.onload = function() {
+        twemoji.size = '72x72';
+        twemoji.parse(document.body);
       }
     </style>
+    </script>
   </head>
   <body>
     <div id='banner'><span>👋 Ooh－You've found Data Science Volunteers! We haven't launched yet, but would still love your <a href='https://docs.google.com/forms/d/e/1FAIpQLSfmICpl6aqvJ5GCBflK0LETppO9Qq0lOqIY5V3MX_8kKr4ONQ/viewform?usp=sf_link' target="_blank">feedback and suggestions</a>.</span></div>
@@ -368,9 +374,11 @@
           + "<div class='link'><a href='" + data.link + "' target='_blank'>Website</a></div>"
           + "<div class='contact'><a href='" + data.contact + "' target='_blank'>Contact</a></div>"
           + "</div>";
+          twemoji.parse(document.body);
         });
         document.getElementById('projects').innerHTML += "<div class='project perm'><div class='lead'><a><object data='./static/images/leads/hackathons_australia.png' type='image/png'></object><span>Hackathons Australia</span></a></div><div class='clear'></div><div class='hashtag'>#hackaus</div><div class='summary'>Not what you're looking for? Start something new at a hackathon!</div><div class='description'>An index of upcoming and past hackathons around the country. Hackathons Australia is a not-for-profit community for hackathon organisers, participants, sponsors, partners and government to connect, empower, grow and advance the hackathon community and accelerate an innovative culture.</div><div class='link'><a href='http://hackathonsaustralia.com' target='_blank'>Website</a></div></div>";
         document.getElementById('loading').style.display = 'none'; 
+        twemoji.parse(document.body);
       });
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-126905842-1"></script>
