@@ -19,7 +19,7 @@
     <div id='banner'><span>👋 Ooh－You've found Data Science Volunteers! We haven't launched yet, but would still love your <a href='https://docs.google.com/forms/d/e/1FAIpQLSfmICpl6aqvJ5GCBflK0LETppO9Qq0lOqIY5V3MX_8kKr4ONQ/viewform?usp=sf_link' target="_blank">feedback and suggestions</a>.</span></div>
     <div class='container'>
       <div id='header'></div>
-      <div id='about'><span>Projects</span><span>If you're looking to use your data skills for good－look no further! 👏<p>Here is a comprehensive list of volunteer data science projects that you can get involved in today. While projects may be supported by community organisations or by individual contributors, they have one thing in common: they need talented and passionate people like you to help them succeed!<p>Missing something? You can <a href='https://docs.google.com/forms/d/e/1FAIpQLSfmICpl6aqvJ5GCBflK0LETppO9Qq0lOqIY5V3MX_8kKr4ONQ/viewform?usp=pp_url&entry.1698109253=Add+a+project' target="_blank">add your project</a>!</span></div>
+      <div class='about main'><span>Projects</span><span>If you're looking to use your data skills for good－look no further! 👏<p>Here is a comprehensive list of volunteer data science projects that you can get involved in today. While projects may be supported by community organisations or by individual contributors, they have one thing in common: they need talented and passionate people like you to help them succeed!<p>Missing something? You can <a href='https://docs.google.com/forms/d/e/1FAIpQLSfmICpl6aqvJ5GCBflK0LETppO9Qq0lOqIY5V3MX_8kKr4ONQ/viewform?usp=pp_url&entry.1698109253=Add+a+project' target="_blank">add your project</a>!</span></div>
       <div id='showall'><a href='./projects.html'>view all</a></div>
       <div id='projects'></div>
       <div id='loading'><object type="image/svg+xml" data="./static/images/loading.svg">Loading...</object></div>
@@ -100,12 +100,12 @@
           + "<div class='hashtag'>" + data.hashtag + "</div>"
           + "<div class='summary'>" + data.summary + "</div>"
           + "<div class='description'>" + data.description + "</div>"
-          + "<div class='link'><a href='" + data.link + "' target='_blank'>Website</a></div>"
-          + "<div class='contact'><a href='" + data.contact + "' target='_blank'>Contact</a></div>"
+          + "<div class='link'><a href='" + data.link + "' target='_blank'>🔗 Website</a></div>"
+          + "<div class='contact'><a href='" + data.contact + "' target='_blank'>💌 Contact</a></div>"
           + "</div>";
           twemoji.parse(document.body);
         });
-        document.getElementById('projects').innerHTML += "<div class='project perm'><div class='lead'><a><object data='./static/images/leads/hackathons_australia.png' type='image/png'></object><span>Hackathons Australia</span></a></div><div class='clear'></div><div class='hashtag'>#hackaus</div><div class='summary'>Not what you're looking for? Start something new at a hackathon!</div><div class='description'>An index of upcoming and past hackathons around the country. Hackathons Australia is a not-for-profit community for hackathon organisers, participants, sponsors, partners and government to connect, empower, grow and advance the hackathon community and accelerate an innovative culture.</div><div class='link'><a href='http://hackathonsaustralia.com' target='_blank'>Website</a></div></div>";
+        document.getElementById('projects').innerHTML += "<div class='project perm'><div class='lead'><a><object data='./static/images/leads/hackathons_australia.png' type='image/png'></object><span>Hackathons Australia</span></a></div><div class='clear'></div><div class='hashtag'>#hackaus</div><div class='summary'>Not what you're looking for? Start something new at a hackathon!</div><div class='description'>An index of upcoming and past hackathons around the country. Hackathons Australia is a not-for-profit community for hackathon organisers, participants, sponsors, partners and government to connect, empower, grow and advance the hackathon community and accelerate an innovative culture.</div><div class='link'><a href='http://hackathonsaustralia.com' target='_blank'>🔗 Website</a></div></div>";
         document.getElementById('loading').style.display = 'none'; 
         twemoji.parse(document.body);
       });
