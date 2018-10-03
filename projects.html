@@ -63,10 +63,12 @@
         var projectBy = lead.replace(/-/gi, ' ');
         var projectIn = '';
         var collection = db.collection("projects").where('lead','==',projectBy);
+        document.getElementById('showall').style.visibility = 'visible'; 
       } else if(locality != null) {
         var projectIn = locality.replace(/-/gi, ' ');
         var projectBy = '';
         var collection = db.collection("projects").where('locality','==',projectIn);
+        document.getElementById('showall').style.visibility = 'visible'; 
       } else {
         var projectIn = '';
         var projectBy = '';
