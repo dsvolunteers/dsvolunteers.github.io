@@ -97,11 +97,11 @@
           if (country == 'US'){
             country = '🇺🇸';
           }
-          var city = data.locality.slice(0, -3);
+
           if (data.locality ) 
           projects.innerHTML +=  "<div class='project' id='" + doc.id +"'>" 
           + "<div class='lead'><a href='?" + projectIn + "by=" + lead_filter + "'><object data='./static/images/leads/" + lead + ".png' type='image/png'>" + /*data.lead.charAt(0) +*/ "</object><span>" + data.lead + "</span></a></div>"
-          + "<div class='locality'><a href='?" + projectBy + "in=" + locality_filter + "'><span>" + city + ' ' + country + "</span></a></div>"
+          + "<div class='locality'><a href='?" + projectBy + "in=" + locality_filter + "'><span>" + country + "</span></a></div>"
           + "<div class='clear'></div>"
           + "<div class='hashtag'>" + data.hashtag + "</div>"
           + "<div class='summary'>" + data.summary + "</div>"
