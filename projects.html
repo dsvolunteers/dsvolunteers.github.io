@@ -94,6 +94,9 @@
           if (country == 'AU'){
             country = '🇦🇺';
           }
+          if (country == 'US'){
+            country = '🇺🇸';
+          }
           var city = data.locality.slice(0, -3);
           if (data.locality ) 
           projects.innerHTML +=  "<div class='project' id='" + doc.id +"'>" 
